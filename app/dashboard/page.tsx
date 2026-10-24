@@ -731,21 +731,7 @@ export default function Home({ embedded = false, onWalletChange }: { embedded?: 
           </div>
         </header> : null}
 
-        <div className={`${embedded ? 'flex w-full' : 'mx-auto flex w-full max-w-lg'}${embedded && sponsorship ? ' hidden' : ''}`}>
-          {!embedded ? (
-            <div className="mb-4 flex justify-end">
-              <Button type="button" variant="ghost" size="icon" aria-label="Transfer overview" onClick={() => setShowTransferInfo(current => !current)} className="h-9 w-9 rounded-full border border-border bg-background text-muted-foreground hover:text-foreground">
-                <Info className="size-4" />
-              </Button>
-            </div>
-          ) : null}
-          {showTransferInfo ? (
-            <Alert className="mb-6 border-primary/20 bg-primary/5">
-              <ShieldCheck />
-              <AlertTitle>Prototype transaction on Stacks testnet</AlertTitle>
-              <AlertDescription>The wallet authorizes an exact asset outflow. The sponsor pays STX and receives the quoted fee atomically.</AlertDescription>
-            </Alert>
-          ) : null}
+        <div className={`${embedded ? 'w-full' : 'mx-auto w-full max-w-lg'}${embedded && sponsorship ? ' hidden' : ''}`}>
           <Card size="sm" className={embedded ? 'w-full border-white/10 bg-card/45 shadow-none backdrop-blur-xl' : 'w-full'}>
             <CardContent>
               <form className={embedded ? 'grid gap-3' : 'grid gap-4'} onSubmit={event => { event.preventDefault(); void createQuote(); }}>
