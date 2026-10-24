@@ -1,0 +1,170 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/shadcn.css";
+@import "fumadocs-ui/css/preset.css";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  color-scheme: dark;
+  --background: oklch(0.135 0.012 245);
+  --foreground: oklch(0.975 0.004 220);
+  --card: oklch(0.18 0.014 245);
+  --card-foreground: oklch(0.975 0.004 220);
+  --popover: oklch(0.18 0.014 245);
+  --popover-foreground: oklch(0.975 0.004 220);
+  --primary: oklch(0.77 0.14 169);
+  --primary-foreground: oklch(0.15 0.025 175);
+  --secondary: oklch(0.235 0.018 245);
+  --secondary-foreground: oklch(0.94 0.006 220);
+  --muted: oklch(0.235 0.018 245);
+  --muted-foreground: oklch(0.68 0.018 235);
+  --accent: oklch(0.265 0.025 230);
+  --accent-foreground: oklch(0.96 0.008 220);
+  --destructive: oklch(0.67 0.2 24);
+  --border: oklch(0.31 0.02 240);
+  --input: oklch(0.31 0.02 240);
+  --ring: transparent;
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--card-foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+  --fd-layout-width: 1280px;
+  --fd-sidebar-width: 220px;
+  --fd-toc-width: 200px;
+  --fd-page-width: 720px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+@theme inline {
+  --font-heading: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+
+  input[data-slot="input"]:autofill,
+  input[data-slot="input"]:-webkit-autofill,
+  input[data-slot="input"]:-webkit-autofill:hover,
+  input[data-slot="input"]:-webkit-autofill:focus {
+    background-color: transparent !important;
+    background-image: none !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: var(--foreground) !important;
+    caret-color: var(--foreground);
+    color-scheme: dark;
+    transition: background-color 9999s ease-out 0s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:focus-visible { outline: 2px solid transparent; outline-offset: 3px; }
+:focus { outline: 2px solid transparent; outline-offset: 3px; }
+
+.docs-print-view {
+  width: min(100% - 2rem, 900px);
+  margin: 2rem auto;
+  padding: 2rem 2.5rem;
+  color: #17202a;
+  background: #fff;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.docs-print-cover { margin: 0 0 4rem; }
+.docs-print-cover h1 { margin: 0; color: #000; font-size: 2.5rem; font-weight: 700; }
+.docs-print-cover p, .docs-print-description { color: #52606d; }
+.docs-print-section { margin: 0 0 3rem; }
+.docs-print-section h1 { padding-bottom: 0.5rem; border-bottom: 1px solid #d9e0e5; font-size: 1.8rem; }
+.docs-print-section h2 { margin-top: 2rem; font-size: 1.35rem; }
+.docs-print-section pre { overflow-wrap: anywhere; white-space: pre-wrap; background: #f2f5f7; padding: 1rem; }
+.docs-print-section table { border-collapse: collapse; width: 100%; }
+.docs-print-section th, .docs-print-section td { border: 1px solid #cbd5dc; padding: 0.4rem; text-align: left; }
+
+@media print {
+  @page { size: A4 portrait; margin: 18mm; }
+  body * { visibility: hidden !important; }
+  .docs-print-view, .docs-print-view * { visibility: visible !important; }
+  .docs-print-view { position: absolute; inset: 0; width: 100%; margin: 0; padding: 0; color: #17202a; }
+  .docs-print-view .aspect-video { display: none !important; }
+  .docs-print-section { break-before: page; }
+  .docs-print-cover + .docs-print-section { break-before: auto; }
+  a { color: inherit; text-decoration: none; }
+  pre, table, blockquote, img { break-inside: avoid; }
+}
